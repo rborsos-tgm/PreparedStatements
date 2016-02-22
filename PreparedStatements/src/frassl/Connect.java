@@ -14,7 +14,7 @@ public class Connect {
 	private String user;
 	private String password;
 	private String dbname;
-	Connection conn;
+	private Connection conn;
 
 	/**
 	 * Constructor that establishes a connection
@@ -41,7 +41,7 @@ public class Connect {
 			e.printStackTrace();
 		}
 		
-		System.out.print(Sname +""+ user +""+ password +""+ dbname);
+		System.out.print(servername +""+ user +""+ password +""+ dbname+"success");
 		
 	}
 	
@@ -52,6 +52,10 @@ public class Connect {
 	public void dropConnection() throws SQLException{
 		conn.close();
 		
+	}
+	
+	public Connection getConn(){
+		return this.conn;
 	}
 	
 	

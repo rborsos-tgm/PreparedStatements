@@ -3,6 +3,7 @@ package frassl;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
@@ -26,50 +27,34 @@ private String dbname;
  * @param arguments the StringArray with the userArguments
  * @throws ParseException
  */
-@SuppressWarnings({ "static-access", "deprecation" })
+@SuppressWarnings({ "static-access" })
 public  void  getConnArgs(String[] arguments) throws ParseException{
 	
 	//Options are made 
 	Options options = new Options();
 	
-	options.addOption(Option.builder("sn")
-		     .required(true)
-		     .longOpt("serverName")
-		     .desc("adress of the database server")
-		     .build()); 
+
+	options.addOption("s" , "serveraddress" , true, "Test");
+	options.addOption("u" , "user name" , true, "Test");
+	options.addOption("p" , "password" , true, "Test");
+	options.addOption("d" , "database name" , true, "Test");
 	
-	options.addOption(Option.builder("u")
-		     .required(true)
-		     .longOpt("userName")
-		     .desc("username for the database connection")
-		     .build()); 
-	
-	options.addOption(Option.builder("p")
-		     .required(true)
-		     .longOpt("password")
-		     .desc("password for the database connection")
-		     .build()); 
-	
-	options.addOption(Option.builder("db")
-		     .required(true)
-		     .longOpt("databaseName")
-		     .desc("name of the Database")
-		     .build()); 
-	
-	//options and arguments are parsed
+	HelpFormatter formatter = new HelpFormatter();
+	formatter.printHelp("ant", options);
 	CommandLineParser parser = new DefaultParser();
 	CommandLine line = parser.parse(options, arguments);
+	
 
 	//arguments are saved into classvariables
-	this.servername = line.getOptionValue("sn");
+	this.servername = line.getOptionValue("s");
 	this.user = line.getOptionValue("u");
 	this.password = line.getOptionValue("p");
-	this.dbname = line.getOptionValue("db");
+	this.dbname = line.getOptionValue("d");
 	
 	
 	//Test-Debugging
-	System.out.print(arguments[1]);
-	System.out.print(servername +""+ user +""+ password +""+ dbname+line.hasOption("u"));
+	System.out.print(arguments[0]);
+	System.out.println(servername +""+ user +""+ password +""+ dbname);
 	
 	
 }

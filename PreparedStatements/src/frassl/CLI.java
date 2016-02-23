@@ -21,7 +21,7 @@ public class CLI {
 	private String user;
 	private String password;
 	private String dbname;
-	private boolean valid = true;
+	
 
 	/**
 	 * establishes options for the arguments filters the input of the user
@@ -96,10 +96,6 @@ public class CLI {
 	 */
 	public String getDbname() {
 		return dbname;
-	}
-
-	public boolean isValid() {
-		return valid;
 	}
 
 }

@@ -15,7 +15,7 @@ public class Connect {
 	private String password;
 	private String dbname;
 	private Connection conn;
-	boolean refused = false;
+	private boolean refused = false;
 
 	/**
 	 * Constructor that establishes a connection

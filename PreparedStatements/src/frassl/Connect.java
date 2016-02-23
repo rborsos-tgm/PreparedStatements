@@ -15,6 +15,7 @@ public class Connect {
 	private String password;
 	private String dbname;
 	private Connection conn;
+	boolean refused = false;
 
 	/**
 	 * Constructor that establishes a connection
@@ -38,10 +39,10 @@ public class Connect {
 			conn = ds.getConnection();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			refused = true;
 		}
 		
-		System.out.print(servername +""+ user +""+ password +""+ dbname+"success");
+	
 		
 	}
 	
@@ -56,6 +57,10 @@ public class Connect {
 	
 	public Connection getConn(){
 		return this.conn;
+	}
+
+	public boolean refused(){ 
+		return refused;
 	}
 	
 	

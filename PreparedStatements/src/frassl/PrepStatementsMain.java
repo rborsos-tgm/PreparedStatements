@@ -33,6 +33,7 @@ public class PrepStatementsMain {
 						props.getPassword(), props.getDbname());// trying to
 																// connect
 				if (conn.refused() == false) { // if connection is not refused -> launch
+					System.out.println("propertiesfile correct");
 					launch(conn);
 				}
 
